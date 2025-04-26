@@ -30,13 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Главная</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Продукты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.create') }}">Добавить продукт</a>
                     </li>
                 </ul>
             </div>

@@ -10,25 +10,17 @@ class Product extends Model
         'external_id',
         'title',
         'description',
-        'category',
-        'price',
-        'discount_percentage',
-        'rating',
-        'stock',
         'brand',
+        'price',
         'thumbnail',
         'images',
-        'tags',
-        'meta',
+        'data',
     ];
 
     protected $casts = [
-        'images' => 'array',
-        'tags' => 'array',
-        'meta' => 'array',
+        'external_id' => 'integer',
         'price' => 'float',
-        'discount_percentage' => 'float',
-        'rating' => 'float',
-        'stock' => 'integer',
+        'images' => 'array',
+        'data' => 'array',
     ];
 }
