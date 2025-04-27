@@ -17,36 +17,6 @@ abstract class AbstractApiService implements ApiServiceInterface
     protected string $endpoint;
 
     /**
-     * Get all items
-     *
-     * @param array $params
-     * @return array
-     */
-    public function getAll(array $params = []): array
-    {
-        $response = Http::get($this->baseUrl . '/' . $this->endpoint, $params);
-        
-        return $response->json();
-    }
-
-    /**
-     * Get item by ID
-     *
-     * @param int $id
-     * @return array|null
-     */
-    public function getById(int $id): ?array
-    {
-        $response = Http::get($this->baseUrl . '/' . $this->endpoint . '/' . $id);
-        
-        if ($response->failed()) {
-            return null;
-        }
-        
-        return $response->json();
-    }
-
-    /**
      * Search items
      *
      * @param string $query
@@ -57,19 +27,6 @@ abstract class AbstractApiService implements ApiServiceInterface
     {
         $params['q'] = $query;
         $response = Http::get($this->baseUrl . '/' . $this->endpoint . '/search', $params);
-        
-        return $response->json();
-    }
-
-    /**
-     * Add new item
-     *
-     * @param array $data
-     * @return array
-     */
-    public function add(array $data): array
-    {
-        $response = Http::post($this->baseUrl . '/' . $this->endpoint . '/add', $data);
         
         return $response->json();
     }

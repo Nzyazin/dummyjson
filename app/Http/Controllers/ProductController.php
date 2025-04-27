@@ -16,17 +16,6 @@ class ProductController extends Controller
     {
         $this->productService = $productService;
     }
-
-    public function index(): JsonResponse
-    {
-        $products = $this->productService->getAllProducts();
-        
-        return response()->json([
-            'success' => true,
-            'data' => $products,
-            'count' => $products->count(),
-        ]);
-    }
     
     public function fetchAndSaveIPhoneProducts(): JsonResponse
     {

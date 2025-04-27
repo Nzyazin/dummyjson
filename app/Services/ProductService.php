@@ -55,26 +55,4 @@ class ProductService
 
         return $product;
     }
-
-    public function addProduct(array $data): Product
-    {
-        $response = $this->apiService->add($data);
-        
-        return $this->saveProduct($response);
-    }
-
-    public function getAllProducts(): Collection
-    {
-        return Product::all();
-    }
-
-    public function getProductById(int $id): ?Product
-    {
-        return Product::find($id);
-    }
-
-    public function getProductsByBrand(string $brand): Collection
-    {
-        return Product::where('brand', 'like', "%{$brand}%")->get();
-    }
 }
