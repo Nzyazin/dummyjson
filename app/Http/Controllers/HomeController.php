@@ -52,25 +52,4 @@ class HomeController extends Controller
         Product::truncate();
         return redirect()->route('home')->with('success', 'iPhone products deleted successfully');
     }
-
-    /**
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'nullable|numeric',
-            'brand' => 'nullable|string|max:100',
-            'thumbnail' => 'nullable|string|url',
-            'images' => 'nullable|array',
-        ]);
-
-        $this->productService->addProduct($validated);
-        
-        return redirect()->route('home')->with('success', 'Product added successfully');
-    }
 }
