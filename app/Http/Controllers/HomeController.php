@@ -39,8 +39,17 @@ class HomeController extends Controller
      */
     public function fetchIPhoneProducts()
     {
-        $this->productService->fetchAndSaveIPhoneProducts();
-        return redirect()->route('home')->with('success', 'iPhone products fetched and saved successfully');
+        try {
+            $products = $this->productService->fetchAndSaveIPhoneProducts();
+
+            if ($products->isEmpty()) {
+                return redirect()->route('home')->with('warning', 'No iPhone products founds');
+            }
+
+            return redirect()->route('home')->with('success', 'iPhone products fetched and saved successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('home')->with('error', 'Failed to fetch iPhone products: ' . $e->getMessage());
+        }        
     }
 
     /**
